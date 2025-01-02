@@ -142,7 +142,7 @@ p {
 .Explore {
     width: 100%;
     height: 80vh;
-    background-image: url(walking.jfif);
+    background-image: url('walking.jfif');
     background-size: cover; 
     background-repeat: no-repeat;
     background-position: center;
