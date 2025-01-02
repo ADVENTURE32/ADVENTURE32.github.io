@@ -56,7 +56,7 @@ header {
 .header-content{
     margin-bottom: 150px;
     text-align: center;
-    color: whitesmoke;
+    color: #blue;
 }
 
 .header-content h2{
@@ -81,7 +81,7 @@ header {
     padding: 8px 15px;
     background: #c53434;
     border-radius: 30px;
-    color: whitesmoke;
+    color: #blue;
 }
 
 .menu-btn{
