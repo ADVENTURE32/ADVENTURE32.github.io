@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADVANTURE</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <nav class="navbar">
+     <h1 class="logo">ADVENTURE</h1>
+    <ul class="nav-link">
+        <li class="active"><a href="#"></a>Home</li>
+        <li><a href="#"></a>Tours</li>
+        <li><a href="#"></a>Explore</li>
+        <li><a href="#"></a>About</li>
+        <li class="ctn"><a href="#"></a>Content</li>
+    </ul>
+     <image src="./images/menu.png"class="menu-btn"></image>
+    </nav>
+    <header>
+        <div class="header-content">
+        <h2>Explore the colorful gift</h2>
+        <div class="line"></div>
+        <h1>A WONDERFUL GIFT</h1>
+        <a href="#" class="ctn">Learn More</a>
+    </div>
+ </header>
+      <section class="events">
+            <div class="title">
+             <h1>Upcoming Events</h1>
+             <div class="line"></div>
+         </div>
+            <div class="row">
+            <div class="col">
+           <img src="./images/walking.jfif" alt="">
+            <h4>Event camp track</h4>
+            <p>Lorem ipsum dolor sit amet consectetur
+                 adipisicing elit.Optio
+                 pedit reprehenderit fugit molestiae laborum eaque expedita 
+                 delectus uis, ratione praesentium esse?</p>
+                 <a href="#" class="ctn">Learn More</a>
+        </div>
+         <div class="row">
+            <div class="col">
+             <img src="./images/walking.jfif" alt="">
+             <h4>Event Wolking Holidays</h4>
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing
+         i fuga fugit dolor consectetur iusto architectous quis, ratione praesentium esse?</p>
+             <a href="#" class="ctn">Learn More</a>
+            </div>
+         </div>
+      </section>
+
+
+
+       <section class="Explore">
+        <div class="explore-content">
+            <h1>EXPLORE THE WORLD</h1>
+            <div class="line"></div>
+    <P>ea similique laborum quibusdam sunt eligendi officia dolores ipsa, quidem maxime
+      eaque libero quod, dolorem maiores, culpa quo laboriosam!</P>
+        </div>
+         <a href="" class="ctn">learn More</a>
+       </section>
+       <script>
+        const menuBtn = document.querySelector('.menu-btn')
+        const navlink =document.querySelector('.nav-link')
+        menuBtn.addEventListener('click',()=>{
+            navlink.classList.toggle('mobile-menu')
+        }
+    )
+       </script>
+</body>
+</html>
