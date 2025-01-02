@@ -7,28 +7,31 @@
     margin: 0;
     padding: 0;
 }
-body{
+
+body {
     overflow-x: hidden;
 }
-.active{
+
+.active {
     color: #cc2a2a;
     text-decoration: underline;
     font-weight: bold;
 }
 
-
- ul{
+ul {
     list-style: none;
- }
+}
 
-.nav-link{
+.nav-link {
     display: flex;
     align-items: center;
 }
-.nav-link li{
+
+.nav-link li {
     margin: 0px 30px;
 }
-.navbar{
+
+.navbar {
     display: flex;
     position: absolute;
     top: 0;
@@ -36,12 +39,13 @@ body{
     width: 100%;
     justify-content: space-between;
     padding: 20px;
-    color: whitesmoke;
+    color: blue; /* Changed from whitesmoke to blue */
 }
 
- a {
+a {
     text-decoration: none;
- }
+}
+
 header {
     width: 100vw; 
     height: 100vh;
@@ -53,16 +57,17 @@ header {
     justify-content: center;
 }
 
-.header-content{
+.header-content {
     margin-bottom: 150px;
     text-align: center;
-    color: #blue;
+    color: blue; /* Changed from whitesmoke */
 }
 
-.header-content h2{
+.header-content h2 {
     font-size: 4vmin;
 }
-.line{
+
+.line {
     width: 150px;
     height: 4px;
     margin: 10px auto;
@@ -70,21 +75,20 @@ header {
     border-radius: 5px;
 }
 
-.header-content h1{
+.header-content h1 {
     font-size: 7vmax;
     margin-top: 50px;
     margin-bottom: 30px;
-
 }
 
-.ctn{
+.ctn {
     padding: 8px 15px;
     background: #c53434;
     border-radius: 30px;
-    color: #blue;
+    color: blue; /* Changed from whitesmoke */
 }
 
-.menu-btn{
+.menu-btn {
     position: absolute;
     top: 30px;
     right: 30px;
@@ -93,98 +97,101 @@ header {
     display: none;
 }
 
-section{
+section {
     width: 80%;
     margin: 80px auto;
-
 }
-.title{
+
+.title {
     text-align: center;
     font-size: 6vmin;
     color: #aca7a7;
 }
-.row{
+
+.row {
     display: flex;
     align-items: center;
     width: 100%;
     justify-content: space-between;
-   
 }
+
 .row .col {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
 
-.events .row{
+.events .row {
     margin-top: 70px;
 }
 
-h4{
+h4 {
     font-size: 3vmin;
     color: #aca7a7;
     margin: 20px auto;
 }
-p{
+
+p {
     color: aquamarine;
 }
 
-.events .ctn{
+.events .ctn {
     margin-top: 30px;
 }
 
-
-.Explore{
-      width: 100%;
-      height: 80vh;
-      background-image: url(./images/walking.jfif);
-      background-size: cover; 
-      background-repeat: no-repeat;
-      background-position: center;
-      display: flex;
-      align-items: center;
+.Explore {
+    width: 100%;
+    height: 80vh;
+    background-image: url(./images/walking.jfif);
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;
 }
 
-.explore-content{
-      width: 50%;
-      padding: 50px;
-      color: whitesmoke;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
+.explore-content {
+    width: 50%;
+    padding: 50px;
+    color: blue; /* Changed from whitesmoke */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .explore-content h1 {
     font-size: 5vmin;
     margin: 50px;
-
 }
 
-.explore-content .line{
+.explore-content .line {
     margin-bottom: 50px;
 }
-.explore-content p{
-    color: whitesmoke;
+
+.explore-content p {
+    color: blue; /* Changed from whitesmoke */
 }
 
-.explore-content .ctn{
+.explore-content .ctn {
     margin-top: 40px;
 }
-@media only  screen and (max-width:850px){
 
-    .menu-btn{
+@media only screen and (max-width:850px) {
+    .menu-btn {
         display: block;
     }
-    .navbar{
+
+    .navbar {
         padding: 0;
     }
-    .logo{
+
+    .logo {
         position: absolute;
         top: 30px;
         left: 30px;
     }
-    .nav-link{
+
+    .nav-link {
         flex-direction: column;
         width: 100%;
         height: 100vh;
@@ -194,12 +201,12 @@ p{
         transition: all 0.5s ease;
     }
 
-    .mobile-menu{
+    .mobile-menu {
         margin-top: 0px;
         border-bottom-right-radius: 30%;
     }
 
-    .nav-link li{
+    .nav-link li {
         margin: 30px auto;
     }
 }
