@@ -40,6 +40,28 @@
             right: 20px;
             cursor: pointer;
         }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure footer stays above content */
+        }
+
+        .footer-content p {
+            margin: 0;
+        }
+
+        /* Ensure content does not overlap footer */
+        body {
+            padding-bottom: 60px; /* Adjust based on footer height */
+        }
     </style>
 </head>
 <body>
@@ -183,26 +205,5 @@
             }
         });
     </script>
-    <footer>
-    <div class="footer-content">
-        <p>&copy; 2025 Adamu Ngotwike. All Rights Reserved.</p>
-    </div>
-</footer>
-
-<style>
-    footer {
-        background-color: #333;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-    .footer-content p {
-        margin: 0;
-    }
-</style>
-
 </body>
-</html> 
+</html>
