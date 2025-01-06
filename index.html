@@ -14,11 +14,12 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Background color for body */
         }
 
         /* Navigation Bar */
         .navbar {
-            background-color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.7); /* Solid background for navbar */
             width: 90%;
             margin: 10px auto;
             border-radius: 8px;
@@ -32,12 +33,12 @@
 
         .navbar-brand {
             font-weight: bold;
-            color: #333;
+            color: white;
         }
 
         .nav-link {
             font-size: 16px;
-            color: #333;
+            color: white;
             transition: color 0.3s ease, background-color 0.3s ease;
         }
 
@@ -49,20 +50,29 @@
             margin: 0 10px;
         }
 
-        .main-content {
-            padding-top: 120px;
-        }
-
+        /* Header Section */
         header {
             text-align: center;
             padding: 50px 20px;
-            background-color: #4CAF50;
+            background-image: url('header-image.jpg'); /* Image tied to the header content */
+            background-size: cover;
+            background-position: center;
             color: white;
         }
 
+        header img {
+            width: 50%; /* Adjust size as needed */
+            margin-top: 20px;
+        }
+
+        /* Section Style for Content */
         section {
             padding: 40px 20px;
             text-align: center;
+            background-image: url('section-image.jpg'); /* Image tied to the section content */
+            background-size: cover;
+            background-position: center;
+            color: white;
         }
 
         section h1 {
@@ -71,9 +81,15 @@
 
         section p {
             font-size: 16px;
-            color: #555;
+            color: #ddd; /* Lighter color text for readability */
         }
 
+        section img {
+            width: 80%; /* Image size within the section */
+            margin-top: 20px;
+        }
+
+        /* Footer */
         footer {
             background-color: #333;
             color: white;
@@ -94,144 +110,41 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#homeModal"><i class="bi bi-house-door"></i> Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#toursModal"><i class="bi bi-map"></i> Tours</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exploreModal"><i class="bi bi-compass"></i> Explore</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutModal"><i class="bi bi-info-circle"></i> About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal"><i class="bi bi-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Tours</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Explore</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <div class="main-content">
-        <header>
-            <h1>Welcome to Adventure</h1>
-            <p>Your next journey begins here.</p>
-        </header>
+    <header>
+        <h1>Welcome to Adventure</h1>
+        <p>Your next journey begins here.</p>
+        <img src="header-image.jpg" alt="Adventure Header Image">
+    </header>
 
-        <section>
-            <h1>Upcoming Events</h1>
-            <p>Join us for our upcoming events and explore nature like never before.</p>
-        </section>
+    <section>
+        <h1>Upcoming Events</h1>
+        <p>Join us for our upcoming events and explore nature like never before.</p>
+        <img src="events-image.jpg" alt="Upcoming Events">
+    </section>
 
-        <section>
-            <h1>Explore the World</h1>
-            <p>Discover new places, meet amazing people, and create unforgettable memories.</p>
-        </section>
-    </div>
+    <section>
+        <h1>Explore the World</h1>
+        <p>Discover new places, meet amazing people, and create unforgettable memories.</p>
+        <img src="explore-image.jpg" alt="Explore the World">
+    </section>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 . All rights reserved.</p>
+        <p>&copy; 2025 Adventure Travel. All rights reserved.</p>
         <p>developed by adamu ngotwike</p>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Modal for Home -->
-    <div class="modal fade" id="homeModal" tabindex="-1" aria-labelledby="homeModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="homeModalLabel">Welcome to Adventure</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h1>Home</h1>
-                    <p>Discover the best adventures and start planning your next trip with us. Explore the world like never before!</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal for Tours -->
-    <div class="modal fade" id="toursModal" tabindex="-1" aria-labelledby="toursModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="toursModalLabel">Explore Our Tours</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h1>Upcoming Tours</h1>
-                    <p>Join us on unforgettable adventures to the world's most beautiful places. Whether you're into hiking, sightseeing, or cultural experiences, we have something for everyone.</p>
-                    <ul>
-                        <li>Mountain Adventure</li>
-                        <li>Coastal Expedition</li>
-                        <li>Jungle Safari</li>
-                        <li>Historical Landmarks Tour</li>
-                    </ul>
-                    <p>Don't miss out on these amazing experiences!</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal for Explore -->
-    <div class="modal fade" id="exploreModal" tabindex="-1" aria-labelledby="exploreModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exploreModalLabel">Explore the World</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h1>Explore the World</h1>
-                    <p>Travel the world and discover new places, meet people from different cultures, and create lasting memories!</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal for About -->
-    <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="aboutModalLabel">About Us</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h1>About Adventure</h1>
-                    <p>We are a team dedicated to offering the most exciting and unforgettable travel experiences. Our passion is to help you explore the world.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal for Contact -->
-    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h1>Contact Us</h1>
-                    <p>If you have any questions or need assistance, feel free to reach out to us. We're here to help!</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </body>
 </html>
