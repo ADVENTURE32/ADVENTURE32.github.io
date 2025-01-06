@@ -317,6 +317,16 @@
                 overlay.style.display = 'block';
             });
         });
+
+        // Close overlay when clicking anywhere outside of the content area
+        const overlays = document.querySelectorAll('.content-overlay');
+        overlays.forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {  // If clicked outside the content area
+                    overlay.style.display = 'none';
+                }
+            });
+        });
     </script>
 </body>
 </html>
