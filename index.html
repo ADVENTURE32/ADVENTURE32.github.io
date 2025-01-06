@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adventure</title>
-    <link rel="stylesheet" href="./style.css">
     <style>
         /* General Layout */
         body {
@@ -86,6 +85,114 @@
             right: 20px;
             cursor: pointer;
         }
+
+        /* Hide the menu items by default on small screens */
+        .nav-link {
+            display: none;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            text-align: center;
+        }
+
+        .nav-link li {
+            padding: 10px 0;
+        }
+
+        .nav-link li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .menu-btn {
+            display: block;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            background-image: url('menu-icon.png');  /* Make sure to use a valid image URL */
+            background-size: cover;
+            margin-left: auto;
+            margin-right: 10px;
+        }
+
+        /* Show the navigation links when the menu button is clicked */
+        .nav-link.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .nav-link {
+                display: none;  /* Initially hide the menu items */
+            }
+
+            .menu-btn {
+                display: block;
+            }
+        }
+
+        /* General Styles for Header and Sections */
+        header {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .header-content h1 {
+            font-size: 3rem;
+            margin: 20px 0;
+        }
+
+        .line {
+            width: 100px;
+            height: 3px;
+            background-color: white;
+            margin: 20px auto;
+        }
+
+        .ctn {
+            text-decoration: none;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .events, .Explore {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .events .row {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .events .col {
+            width: 30%;
+        }
+
+        .events .col img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .events .col h4 {
+            margin-top: 10px;
+        }
+
+        .events .col p {
+            font-size: 14px;
+            color: #555;
+        }
+
     </style>
 </head>
 <body>
@@ -122,12 +229,6 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio pedit reprehenderit fugit molestiae laborum eaque expedita delectus uis, ratione praesentium esse?</p>
                 <a href="#" class="ctn open-overlay" data-popup="walking-popup">Learn More</a>
             </div>
-<!--             <div class="col">
-                <img src="climbing.jfif" alt="">
-                <h4>Event Walking Holidays</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing fuga fugit dolor consectetur iusto architectous quis, ratione praesentium esse?</p>
-                <a href="#" class="ctn open-overlay" data-popup="climbing-popup">Learn More</a>
-            </div> -->
         </div>
     </section>
 
@@ -137,7 +238,7 @@
             <div class="line"></div>
             <p>ea similique laborum quibusdam sunt eligendi officia dolores ipsa, quidem maxime eaque libero quod, dolorem maiores, culpa quo laboriosam!</p>
         </div>
-        <a href="" class="ctn open-overlay" data-popup="explore-popup">Learn More</a>
+        <a href="#" class="ctn open-overlay" data-popup="explore-popup">Learn More</a>
     </section>
 
     <!-- Full-Page Content Overlays (Hidden by default) -->
@@ -177,7 +278,7 @@
         <div class="overlay-content">
             <span class="overlay-close">&times;</span>
             <h2>Content Details</h2>
-            <p>This is the detailed description for the Content section. It will be displayed as a full-page overlay when activated.</p>
+            <p>This is the detailed description for the Content section. It covers the entire screen when clicked.</p>
         </div>
     </div>
 
@@ -190,50 +291,31 @@
 
     <script>
         const menuBtn = document.querySelector('.menu-btn');
-        const navItems = document.querySelectorAll('.nav-item');
-        const overlayElements = document.querySelectorAll('.content-overlay');
-        const openOverlayBtns = document.querySelectorAll('.open-overlay');
-        const closeOverlayBtns = document.querySelectorAll('.overlay-close');
+        const navLinks = document.querySelector('.nav-link');
+        
+        // Toggle the display of the navigation bar when the menu button is clicked
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');  // Toggle the 'show' class
+        });
 
-        // Function to close all overlays
-        function closeAllOverlays() {
-            overlayElements.forEach(overlay => {
-                overlay.style.display = "none";
+        // Overlay close button functionality
+        const closeButtons = document.querySelectorAll('.overlay-close');
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const overlay = button.closest('.content-overlay');
+                overlay.style.display = 'none';
             });
-        }
+        });
 
-        // Event listener for navigation items (Home, Tours, Explore, About, Content)
-        navItems.forEach(item => {
-            item.addEventListener('click', (e) => {
+        // Open overlay when links are clicked
+        const overlayLinks = document.querySelectorAll('.open-overlay');
+        overlayLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const popupId = item.getAttribute('data-popup');
-                closeAllOverlays(); // Close any previously opened overlay
-                document.getElementById(popupId).style.display = "block"; // Open the selected popup
+                const popupId = link.getAttribute('data-popup');
+                const overlay = document.getElementById(popupId);
+                overlay.style.display = 'block';
             });
-        });
-
-        // Open the selected overlay when a "Learn More" button is clicked
-        openOverlayBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const popupId = btn.getAttribute('data-popup');
-                closeAllOverlays(); // Close any previously opened overlay
-                document.getElementById(popupId).style.display = "block"; // Open the selected popup
-            });
-        });
-
-        // Close overlay when the close button (×) is clicked
-        closeOverlayBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                closeAllOverlays(); // Close the overlay
-            });
-        });
-
-        // Close overlay if clicking outside of the content area
-        window.addEventListener('click', (e) => {
-            if (e.target.classList.contains('content-overlay')) {
-                closeAllOverlays(); // Close the overlay if clicking outside of the content area
-            }
         });
     </script>
 </body>
