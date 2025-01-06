@@ -19,30 +19,77 @@
 
         /* Navigation Bar */
         .navbar {
-            background-color: whitesmoke; /* Updated to whitesmoke */
-            width: 90%; /* Restrict width */
-            margin: 10px auto; /* Center the navbar */
+            background-color: whitesmoke;
+            width: 90%;
+            margin: 10px auto;
             border-radius: 8px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            width: 100%; /* Center the title */
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin-right: auto;
+        }
+
+        .search-bar input {
+            width: 200px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
 
         .nav-link {
             font-size: 16px;
-            color: #333; /* Text color */
+            color: #333;
             transition: color 0.3s ease, background-color 0.3s ease;
         }
 
         .nav-link:hover {
-            color: #000; /* Darken on hover */
+            color: #000;
         }
 
         .navbar-nav .nav-item {
             margin: 0 10px;
         }
 
+        .navbar-toggler-icon {
+            color: #333;
+        }
+
+        .btn-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: none;
+        }
+
+        .btn-close span {
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+        }
+
         /* Main Content */
         .main-content {
-            padding-top: 100px; /* Offset for fixed navbar */
+            padding-top: 120px;
         }
 
         header {
@@ -89,13 +136,26 @@
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
+            
+            <!-- Title Centered -->
             <a class="navbar-brand fw-bold text-dark" href="#">ADVENTURE</a>
+
+            <!-- Toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <!-- Navigation Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
+                <button class="btn-close" data-bs-dismiss="collapse" aria-label="Close">
+                    <span>&times;</span>
+                </button>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html"><i class="bi bi-house-door"></i> Home</a>
