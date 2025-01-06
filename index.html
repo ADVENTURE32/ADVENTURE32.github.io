@@ -6,7 +6,7 @@
     <title>Adventure</title>
     <link rel="stylesheet" href="./style.css">
     <style>
-        /* Basic Full-Page Content Overlay */
+        /* Full-Page Overlay */
         .content-overlay {
             display: none; /* Hidden by default */
             position: fixed;
@@ -14,20 +14,22 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Transparent black background */
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
             z-index: 2;
             color: white;
             padding: 20px;
             box-sizing: border-box;
+            overflow: auto; /* In case the content exceeds the screen height */
         }
         .overlay-content {
             background-color: #fff;
             color: black;
-            padding: 20px;
+            padding: 30px;
             border-radius: 8px;
             margin: 50px auto;
             width: 80%;
             max-width: 800px;
+            text-align: center;
         }
         .overlay-close {
             color: black;
@@ -44,11 +46,11 @@
     <nav class="navbar">
         <h1 class="logo">ADVENTURE</h1>
         <ul class="nav-link">
-            <li class="active"><a href="#" class="nav-item" data-page="home">Home</a></li>
+            <li><a href="#" class="nav-item" data-page="home">Home</a></li>
             <li><a href="#" class="nav-item" data-page="tours">Tours</a></li>
             <li><a href="#" class="nav-item" data-page="explore">Explore</a></li>
             <li><a href="#" class="nav-item" data-page="about">About</a></li>
-            <li class="ctn"><a href="#" class="nav-item" data-page="content">Content</a></li>
+            <li><a href="#" class="nav-item" data-page="content">Content</a></li>
         </ul>
         <img src="menu.png" class="menu-btn">
     </nav>
@@ -58,7 +60,7 @@
             <h2>Explore the colorful gift</h2>
             <div class="line"></div>
             <h1>A WONDERFUL GIFT</h1>
-            <a href="#" class="ctn open-overlay">Learn More</a>
+            <a href="#" class="ctn open-overlay" data-popup="home-popup">Learn More</a>
         </div>
     </header>
 
@@ -72,13 +74,13 @@
                 <img src="walking.jfif" alt="">
                 <h4>Event camp track</h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio pedit reprehenderit fugit molestiae laborum eaque expedita delectus uis, ratione praesentium esse?</p>
-                <a href="#" class="ctn open-overlay">Learn More</a>
+                <a href="#" class="ctn open-overlay" data-popup="walking-popup">Learn More</a>
             </div>
             <div class="col">
                 <img src="climbing.jfif" alt="">
                 <h4>Event Walking Holidays</h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing fuga fugit dolor consectetur iusto architectous quis, ratione praesentium esse?</p>
-                <a href="#" class="ctn open-overlay">Learn More</a>
+                <a href="#" class="ctn open-overlay" data-popup="climbing-popup">Learn More</a>
             </div>
         </div>
     </section>
@@ -89,91 +91,88 @@
             <div class="line"></div>
             <p>ea similique laborum quibusdam sunt eligendi officia dolores ipsa, quidem maxime eaque libero quod, dolorem maiores, culpa quo laboriosam!</p>
         </div>
-        <a href="" class="ctn">Learn More</a>
+        <a href="" class="ctn open-overlay" data-popup="explore-popup">Learn More</a>
     </section>
 
     <!-- Dynamic Content Container -->
     <div id="content-container"></div>
 
-    <!-- Full-Page Content Overlay (Hidden by default) -->
-    <div id="contentOverlay" class="content-overlay">
+    <!-- Full-Page Content Overlays (Hidden by default) -->
+    <div id="home-popup" class="content-overlay">
         <div class="overlay-content">
             <span class="overlay-close">&times;</span>
-            <h2>Event Details</h2>
-            <p>This is the detailed description of the event that covers the entire page. You can add more content here as needed.</p>
+            <h2>Home Event Details</h2>
+            <p>This is the detailed description for the Home event. It covers the entire page when activated.</p>
+        </div>
+    </div>
+
+    <div id="walking-popup" class="content-overlay">
+        <div class="overlay-content">
+            <span class="overlay-close">&times;</span>
+            <h2>Walking Camp Track Details</h2>
+            <p>This is the detailed description for the Walking Camp Track event. It also covers the entire page when activated.</p>
+        </div>
+    </div>
+
+    <div id="climbing-popup" class="content-overlay">
+        <div class="overlay-content">
+            <span class="overlay-close">&times;</span>
+            <h2>Climbing Holidays Details</h2>
+            <p>This is the detailed description for the Climbing Holidays event. It will appear as a full-page overlay when activated.</p>
+        </div>
+    </div>
+
+    <div id="explore-popup" class="content-overlay">
+        <div class="overlay-content">
+            <span class="overlay-close">&times;</span>
+            <h2>Explore The World Details</h2>
+            <p>This is the detailed description for the Explore The World event. It will be displayed as a full-page overlay when clicked.</p>
         </div>
     </div>
 
     <script>
         const menuBtn = document.querySelector('.menu-btn');
         const navItems = document.querySelectorAll('.nav-item');
-        const contentContainer = document.getElementById('content-container');
-        const overlay = document.getElementById('contentOverlay');
-        const closeOverlayBtn = document.querySelector('.overlay-close');
+        const overlayElements = document.querySelectorAll('.content-overlay');
+        const openOverlayBtns = document.querySelectorAll('.open-overlay');
+        const closeOverlayBtns = document.querySelectorAll('.overlay-close');
 
-        // Content for each page in the navbar
-        const content = {
-            home: `
-                <h2>Welcome to Adventure!</h2>
-                <p>Explore and enjoy thrilling adventures!</p>
-            `,
-            tours: `
-                <h2>Tours</h2>
-                <p>Discover the best tours around the world!</p>
-            `,
-            explore: `
-                <h2>Explore</h2>
-                <p>Explore new horizons with Adventure!</p>
-            `,
-            about: `
-                <h2>About</h2>
-                <p>Adventure is your gateway to exciting journeys.</p>
-            `,
-            content: `
-                <h2>Content</h2>
-                <p>Check out our amazing content and resources!</p>
-            `
-        };
-
-        // Function to load content dynamically based on the selected page
-        function loadPage(page) {
-            contentContainer.innerHTML = content[page];
+        // Function to close all overlays
+        function closeAllOverlays() {
+            overlayElements.forEach(overlay => {
+                overlay.style.display = "none";
+            });
         }
 
-        // Event listener for each navbar item to load corresponding content
+        // Event listener for navigation items
         navItems.forEach(item => {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
-                loadPage(item.getAttribute('data-page'));
+                closeAllOverlays(); // Close all overlays when clicking on a new page
             });
         });
 
-        // Initialize with Home page content
-        loadPage('home');
-
-        // Toggle mobile menu on button click
-        menuBtn.addEventListener('click', () => {
-            document.querySelector('.nav-link').classList.toggle('mobile-menu');
-        });
-
-        // Open the overlay when "Learn More" button is clicked
-        const openOverlayBtns = document.querySelectorAll('.open-overlay');
+        // Open the selected overlay when a "Learn More" button is clicked
         openOverlayBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                overlay.style.display = "block"; // Show the overlay
+                const popupId = btn.getAttribute('data-popup');
+                closeAllOverlays(); // Close any previously opened overlay
+                document.getElementById(popupId).style.display = "block"; // Open the selected popup
             });
         });
 
-        // Close the overlay when the close button is clicked
-        closeOverlayBtn.addEventListener('click', () => {
-            overlay.style.display = "none"; // Hide the overlay
+        // Close overlay when the close button (×) is clicked
+        closeOverlayBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                closeAllOverlays(); // Close the overlay
+            });
         });
 
-        // Close the overlay if the user clicks outside of the overlay content
+        // Close overlay if clicked outside of the overlay content
         window.addEventListener('click', (e) => {
-            if (e.target === overlay) {
-                overlay.style.display = "none";
+            if (e.target.classList.contains('content-overlay')) {
+                closeAllOverlays(); // Close the overlay if clicking outside of the content area
             }
         });
     </script>
