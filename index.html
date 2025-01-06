@@ -6,6 +6,51 @@
     <title>Adventure</title>
     <link rel="stylesheet" href="./style.css">
     <style>
+        /* General Layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            min-height: 100vh; /* Ensure the body takes full height */
+            display: flex;
+            flex-direction: column;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;  /* Footer scrolls with the page */
+            width: 100%;
+            flex-shrink: 0;  /* Prevent footer from shrinking */
+            margin-top: auto;  /* Ensure it stays at the bottom when content is short */
+        }
+
+        .footer-content p {
+            margin: 0;
+        }
+
+        /* Content Padding for Bottom */
+        .main-content {
+            flex-grow: 1; /* Allow content to grow */
+            padding-bottom: 60px; /* Space for footer */
+        }
+
+        /* Footer Responsiveness */
+        @media (max-width: 768px) {
+            footer {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            footer {
+                padding: 10px;
+            }
+        }
+
         /* Full-Page Overlay */
         .content-overlay {
             display: none; /* Hidden by default */
@@ -39,28 +84,6 @@
             top: 10px;
             right: 20px;
             cursor: pointer;
-        }
-
-        /* Footer Styles */
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000; /* Ensure footer stays above content */
-        }
-
-        .footer-content p {
-            margin: 0;
-        }
-
-        /* Ensure content does not overlap footer */
-        body {
-            padding-bottom: 60px; /* Adjust based on footer height */
         }
     </style>
 </head>
@@ -198,7 +221,7 @@
             });
         });
 
-        // Close overlay if clicked outside of the overlay content
+        // Close overlay if clicking outside of the content area
         window.addEventListener('click', (e) => {
             if (e.target.classList.contains('content-overlay')) {
                 closeAllOverlays(); // Close the overlay if clicking outside of the content area
