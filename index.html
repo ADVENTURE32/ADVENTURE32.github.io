@@ -3,73 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADVANTURE</title>
+    <title>Adventure</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <nav class="navbar">
-     <h1 class="logo">ADVENTURE</h1>
-    <ul class="nav-link">
-        <li class="active"><a href="#"></a>Home</li>
-        <li><a href="#"></a>Tours</li>
-        <li><a href="#"></a>Explore</li>
-        <li><a href="#"></a>About</li>
-        <li class="ctn"><a href="#"></a>Content</li>
-    </ul>
-     <image src="menu.png"class="menu-btn"></image>
+        <h1 class="logo">ADVENTURE</h1>
+        <ul class="nav-link">
+            <li><a href="#" class="nav-item" data-page="home">Home</a></li>
+            <li><a href="#" class="nav-item" data-page="tours">Tours</a></li>
+            <li><a href="#" class="nav-item" data-page="explore">Explore</a></li>
+            <li><a href="#" class="nav-item" data-page="about">About</a></li>
+            <li><a href="#" class="nav-item" data-page="content">Content</a></li>
+        </ul>
+        <img src="menu.png" class="menu-btn">
     </nav>
-    <header>
-        <div class="header-content">
-        <h2>Explore the colorful gift</h2>
-        <div class="line"></div>
-        <h1>A WONDERFUL GIFT</h1>
-        <a href="#" class="ctn">Learn More</a>
-    </div>
- </header>
-      <section class="events">
-            <div class="title">
-             <h1>Upcoming Events</h1>
-             <div class="line"></div>
-         </div>
-            <div class="row">
-            <div class="col">
-           <img src="walking.jfif" alt="">
-            <h4>Event camp track</h4>
-            <p>Lorem ipsum dolor sit amet consectetur
-                 adipisicing elit.Optio
-                 pedit reprehenderit fugit molestiae laborum eaque expedita 
-                 delectus uis, ratione praesentium esse?</p>
-                 <a href="#" class="ctn">Learn More</a>
-        </div>
-         <div class="row">
-            <div class="col">
-             <img src="climbing.jfif" alt="">
-             <h4>Event Wolking Holidays</h4>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing
-         i fuga fugit dolor consectetur iusto architectous quis, ratione praesentium esse?</p>
-             <a href="#" class="ctn">Learn More</a>
-            </div>
-         </div>
-      </section>
 
+    <div id="content-container"></div> <!-- Dynamic Content -->
 
+    <script>
+        const menuBtn = document.querySelector('.menu-btn');
+        const navItems = document.querySelectorAll('.nav-item');
+        const contentContainer = document.getElementById('content-container');
 
-       <section class="Explore">
-        <div class="explore-content">
-            <h1>EXPLORE THE WORLD</h1>
-            <div class="line"></div>
-    <P>ea similique laborum quibusdam sunt eligendi officia dolores ipsa, quidem maxime
-      eaque libero quod, dolorem maiores, culpa quo laboriosam!</P>
-        </div>
-         <a href="" class="ctn">learn More</a>
-       </section>
-       <script>
-        const menuBtn = document.querySelector('.menu-btn')
-        const navlink =document.querySelector('.nav-link')
-        menuBtn.addEventListener('click',()=>{
-            navlink.classList.toggle('mobile-menu')
+        const content = {
+            home: `<h2>Home</h2><p>Welcome to Adventure!</p>`,
+            tours: `<h2>Tours</h2><p>Explore amazing tours!</p>`,
+            explore: `<h2>Explore</h2><p>Discover new places to explore!</p>`,
+            about: `<h2>About</h2><p>Learn more about Adventure.</p>`,
+            content: `<h2>Content</h2><p>Check out our content here.</p>`
+        };
+
+        function loadPage(page) {
+            contentContainer.innerHTML = content[page];
         }
-    )
-       </script>
+
+        // Add event listeners to navigation items
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadPage(item.getAttribute('data-page'));
+            });
+        });
+
+        // Initialize default page (home)
+        loadPage('home');
+
+        menuBtn.addEventListener('click', () => {
+            document.querySelector('.nav-link').classList.toggle('mobile-menu');
+        });
+    </script>
 </body>
 </html>
