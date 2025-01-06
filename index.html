@@ -5,318 +5,196 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adventure</title>
     <style>
-        /* Ensure body and html cover the full width and prevent horizontal overflow */
+        /* General Reset and Prevent Horizontal Scroll */
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
-            overflow-x: hidden; /* Disable horizontal scroll */
+            height: 100%;
+            overflow: hidden; /* Prevent scrolling on the whole page */
+            font-family: Arial, sans-serif;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            min-height: 100vh; /* Ensure the body takes full height */
             display: flex;
             flex-direction: column;
         }
 
-        footer {
+        /* Navigation Bar */
+        .navbar {
             background-color: #333;
             color: white;
-            padding: 20px;
-            text-align: center;
-            position: relative;  /* Footer scrolls with the page */
-            width: 100%;
-            flex-shrink: 0;  /* Prevent footer from shrinking */
-            margin-top: auto;  /* Ensure it stays at the bottom when content is short */
-            font-size: 14px;  /* Smaller font size for footer text */
-        }
-
-        .footer-content p {
-            margin: 5px 0;
-        }
-
-        /* Content Padding for Bottom */
-        .main-content {
-            flex-grow: 1; /* Allow content to grow */
-            padding-bottom: 60px; /* Space for footer */
-        }
-
-        /* Footer Responsiveness */
-        @media (max-width: 768px) {
-            footer {
-                padding: 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            footer {
-                padding: 10px;
-            }
-        }
-
-        /* Full-Page Overlay */
-        .content-overlay {
-            display: none; /* Hidden by default */
-            position: fixed;
+            width: 90%; /* Limit the width of the navigation bar */
+            margin: 0 auto; /* Center the navigation bar */
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed; /* Keep navbar fixed at the top */
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
-            z-index: 2;
-            color: white;
-            padding: 20px;
-            box-sizing: border-box;
-            overflow: auto; /* In case the content exceeds the screen height */
-        }
-        .overlay-content {
-            background-color: #fff;
-            color: black;
-            padding: 30px;
+            right: 0;
+            z-index: 10;
             border-radius: 8px;
-            margin: 50px auto;
-            width: 80%;
-            max-width: 800px;
-            text-align: center;
-        }
-        .overlay-close {
-            color: black;
-            font-size: 24px;
-            font-weight: bold;
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            cursor: pointer;
         }
 
-        /* Hide the menu items by default on small screens */
-        .nav-link {
-            display: none;
-            list-style-type: none;
-            padding: 0;
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
             margin: 0;
-            position: absolute;
-            top: 60px;
-            left: 0;
-            width: 100%;
-            background-color: #333;
-            text-align: center;
+        }
+
+        .nav-link {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-link li {
-            padding: 10px 0;
+            margin: 0 10px;
         }
 
         .nav-link li a {
             color: white;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .menu-btn {
-            display: block;
+            display: none;
             cursor: pointer;
             width: 30px;
             height: 30px;
-            background-image: url('menu-icon.png');  /* Make sure to use a valid image URL */
+            background-image: url('menu-icon.png'); /* Make sure to use a valid image URL */
             background-size: cover;
-            margin-left: auto;
-            margin-right: 10px;
         }
 
-        /* Show the navigation links when the menu button is clicked */
-        .nav-link.show {
-            display: block;
-        }
-
+        /* For smaller screens (mobile) */
         @media (max-width: 768px) {
-            .nav-link {
-                display: none;  /* Initially hide the menu items */
-            }
-
             .menu-btn {
                 display: block;
             }
+
+            .nav-link {
+                display: none; /* Initially hide the menu items */
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: #333;
+                border-radius: 8px;
+                padding: 10px 0;
+            }
+
+            .nav-link li {
+                margin: 10px 0;
+            }
+
+            .nav-link.show {
+                display: flex;
+            }
         }
 
-        /* General Styles for Header and Sections */
-        header {
-            padding: 50px 20px;
+        /* Main Content Section */
+        .main-content {
+            margin-top: 70px; /* Offset content below the fixed navbar */
+            padding: 20px;
+            overflow-y: auto; /* Allow vertical scrolling in the main content */
+            flex-grow: 1; /* Ensure the main content stretches to fill the viewport */
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
             text-align: center;
+            flex-shrink: 0; /* Prevent footer from shrinking */
+            font-size: 14px;
+        }
+
+        /* Content Sections */
+        header {
+            text-align: center;
+            padding: 50px 20px;
             background-color: #4CAF50;
             color: white;
         }
 
-        .header-content h1 {
-            font-size: 3rem;
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        section h1 {
+            font-size: 28px;
             margin: 20px 0;
+        }
+
+        section p {
+            font-size: 16px;
+            color: #555;
         }
 
         .line {
             width: 100px;
             height: 3px;
-            background-color: white;
+            background-color: #4CAF50;
             margin: 20px auto;
-        }
-
-        .ctn {
-            text-decoration: none;
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-
-        .events, .Explore {
-            padding: 40px;
-            text-align: center;
-        }
-
-        .events .row {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
-
-        .events .col {
-            width: 30%;
-        }
-
-        .events .col img {
-            width: 100%;
-            border-radius: 8px;
-        }
-
-        .events .col h4 {
-            margin-top: 10px;
-        }
-
-        .events .col p {
-            font-size: 14px;
-            color: #555;
-        }
-
-        /* Ensure content does not cause horizontal scrolling */
-        * {
-            box-sizing: border-box;
-            overflow-x: hidden; /* Prevent horizontal overflow */
         }
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <h1 class="logo">ADVENTURE</h1>
         <ul class="nav-link">
-            <li><a href="index.html" class="nav-item" data-popup="home-popup">Home</a></li>
-            <li><a href="#" class="nav-item" data-popup="tours-popup">Tours</a></li>
-            <li><a href="#" class="nav-item" data-popup="explore-popup">Explore</a></li>
-            <li><a href="#" class="nav-item" data-popup="about-popup">About</a></li>
-            <li><a href="index.html" class="nav-item" data-popup="content-popup">Content</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Tours</a></li>
+            <li><a href="#">Explore</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
         </ul>
-        <img src="menu.png" class="menu-btn">
+        <img src="menu.png" class="menu-btn" alt="Menu">
     </nav>
 
-    <header>
-        <div class="header-content">
-            <h2>Explore the colorful gift</h2>
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <h1>Welcome to Adventure</h1>
             <div class="line"></div>
-            <h1>A WONDERFUL GIFT</h1>
-            <a href="#" class="ctn open-overlay" data-popup="home-popup">Learn More</a>
-        </div>
-    </header>
+            <p>Explore the world with us.</p>
+        </header>
 
-    <section class="events">
-        <div class="title">
+        <section>
             <h1>Upcoming Events</h1>
             <div class="line"></div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <img src="walking.jfif" alt="">
-                <h4>Event camp track</h4>
-<!--                 <a href="#" class="ctn open-overlay" data-popup="walking-popup">Learn More</a> -->
-            </div>
-        </div>
-    </section>
+            <p>Join us for our upcoming events and explore nature like never before.</p>
+        </section>
 
-    <section class="Explore">
-        <div class="explore-content">
-            <h1>EXPLORE THE WORLD</h1>
+        <section>
+            <h1>Explore the World</h1>
             <div class="line"></div>
-            <p>ea similique laborum quibusdam sunt eligendi offici
-                libero quod, dolorem maiores, culpa quo laboriosam!</p>
-        </div>
-        <a href="#" class="ctn open-overlay" data-popup="explore-popup">Learn More</a>
-    </section>
-
-    <!-- Full-Page Content Overlays (Hidden by default) -->
-    <div id="home-popup" class="content-overlay">
-        <div class="overlay-content">
-            <span class="overlay-close">&times;</span>
-            <h2>Home Event Details</h2>
-            <p>This is the detailed description for the Home event. It covers the entire page when activated.</p>
-        </div>
+            <p>Discover new places, meet amazing people, and create unforgettable memories.</p>
+        </section>
     </div>
 
-    <div id="tours-popup" class="content-overlay">
-        <div class="overlay-content">
-            <span class="overlay-close">&times;</span>
-            <h2>Tours Details</h2>
-            <p>This is the detailed description for the Tours event. It will appear as a full-page overlay when activated.</p>
-        </div>
-    </div>
-
-    <div id="explore-popup" class="content-overlay">
-        <div class="overlay-content">
-            <span class="overlay-close">&times;</span>
-            <h2>Explore The World Details</h2>
-            <p>This is the detailed description for the Explore The World event. It will be displayed as a full-page overlay when clicked.</p>
-        </div>
-    </div>
-
-    <div id="about-popup" class="content-overlay">
-        <div class="overlay-content">
-            <span class="overlay-close">&times;</span>
-            <h2>About Us</h2>
-            <p>This is the detailed description for the About Us section. It will be displayed when the About link is clicked.</p>
-        </div>
-    </div>
-
-    <div id="content-popup" class="content-overlay">
-        <div class="overlay-content">
-            <span class="overlay-close">&times;</span>
-            <h2>Content Details</h2>
-            <p>This is the detailed description for the Content section. It will be displayed as a full-page overlay when clicked.</p>
-        </div>
-    </div>
-
+    <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 Adventure All rights reserved.</p>
-            <p>Designed by Your Name</p>
-        </div>
+        <p>&copy; 2025 Adventure. All rights reserved.</p>
     </footer>
 
     <script>
         // Toggle navigation menu on small screens
         document.querySelector('.menu-btn').addEventListener('click', function() {
             document.querySelector('.nav-link').classList.toggle('show');
-        });
-
-        // Open full-page content overlays
-        document.querySelectorAll('.open-overlay').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const targetPopup = document.getElementById(this.dataset.popup);
-                targetPopup.style.display = 'flex';
-            });
-        });
-
-        // Close the overlays
-        document.querySelectorAll('.overlay-close').forEach(closeButton => {
-            closeButton.addEventListener('click', function() {
-                this.closest('.content-overlay').style.display = 'none';
-            });
         });
     </script>
 </body>
