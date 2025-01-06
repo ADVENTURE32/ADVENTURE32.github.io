@@ -34,16 +34,15 @@
         .navbar-brand {
             font-weight: bold;
             color: #333;
-            margin-right: auto;
         }
 
         /* Search Bar */
         .search-bar {
             display: flex;
             align-items: center;
-            position: relative;
-            width: 40px; /* Initial width of search icon */
             transition: width 0.3s ease;
+            width: 40px; /* Initially narrow */
+            position: relative;
         }
 
         .search-bar input {
@@ -53,21 +52,17 @@
             border-radius: 5px;
             border: 1px solid #ccc;
             transition: width 0.3s ease, opacity 0.3s ease;
-            position: absolute;
-            top: 30px;
-            right: 0;
         }
 
         .search-bar.active {
-            width: 180px; /* Expanded search bar */
+            width: 200px; /* Expanded size */
         }
 
         .search-bar.active input {
-            width: 180px;
+            width: 200px;
             opacity: 1;
         }
 
-        /* Navigation Menu */
         .nav-link {
             font-size: 16px;
             color: #333;
@@ -133,10 +128,16 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <!-- Title Centered -->
-            <a class="navbar-brand" href="#">ADVENTURE</a>
+            <!-- Search Bar with Icon -->
+            <div class="search-bar me-auto" id="searchBar">
+                <i class="bi bi-search" id="searchIcon" style="cursor: pointer;"></i>
+                <input type="text" id="searchInput" placeholder="Search..." />
+            </div>
 
-            <!-- Toggler Button for Mobile -->
+            <!-- Title Centered -->
+            <a class="navbar-brand mx-auto" href="#">ADVENTURE</a>
+
+            <!-- Toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -160,12 +161,6 @@
                         <a class="nav-link" href="#"><i class="bi bi-envelope"></i> Contact</a>
                     </li>
                 </ul>
-            </div>
-
-            <!-- Search Bar with Icon -->
-            <div class="search-bar" id="searchBar">
-                <i class="bi bi-search" id="searchIcon" style="cursor: pointer;"></i>
-                <input type="text" id="searchInput" placeholder="Search..." />
             </div>
         </div>
     </nav>
