@@ -26,10 +26,11 @@
             width: 100%;
             flex-shrink: 0;  /* Prevent footer from shrinking */
             margin-top: auto;  /* Ensure it stays at the bottom when content is short */
+            font-size: 14px;  /* Smaller font size for footer text */
         }
 
         .footer-content p {
-            margin: 0;
+            margin: 5px 0;
         }
 
         /* Content Padding for Bottom */
@@ -179,6 +180,13 @@
             <p>This is the detailed description for the Content section. It will be displayed as a full-page overlay when activated.</p>
         </div>
     </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Adventure. All rights reserved.</p>
+            <p>Developed by Adam</p>
+        </div>
+    </footer>
 
     <script>
         const menuBtn = document.querySelector('.menu-btn');
