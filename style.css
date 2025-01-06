@@ -9,6 +9,7 @@
 }
 
 body {
+    font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
 }
 
@@ -22,15 +23,6 @@ ul {
     list-style: none;
 }
 
-.nav-link {
-    display: flex;
-    align-items: center;
-}
-
-.nav-link li {
-    margin: 0px 30px;
-}
-
 .navbar {
     display: flex;
     position: absolute;
@@ -40,6 +32,15 @@ ul {
     justify-content: space-between;
     padding: 20px;
     color: blue; /* Changed from whitesmoke to blue */
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link li {
+    margin: 0px 30px;
 }
 
 a {
@@ -176,7 +177,8 @@ p {
     margin-top: 40px;
 }
 
-@media only screen and (max-width:850px) {
+/* Mobile Responsiveness */
+@media only screen and (max-width: 850px) {
     .menu-btn {
         display: block;
     }
@@ -201,26 +203,19 @@ p {
         transition: all 0.5s ease;
     }
 
-    .mobile-menu {
-        margin-top: 0px;
-        border-bottom-right-radius: 30%;
-    }
-
     .nav-link li {
         margin: 30px auto;
     }
-} 
-/* General Layout */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    min-height: 100vh; /* Ensure the body takes full height */
-    display: flex;
-    flex-direction: column;
-}
 
+    .navbar .menu-btn {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        display: block;
+    }
+} 
+
+/* Footer Styling */
 footer {
     background-color: #333;
     color: white;
@@ -230,16 +225,11 @@ footer {
     width: 100%;
     flex-shrink: 0;  /* Prevent footer from shrinking */
     margin-top: auto;  /* Ensure it stays at the bottom when content is short */
+    font-size: 14px;  /* Smaller font size for footer text */
 }
 
 .footer-content p {
-    margin: 0;
-}
-
-/* Content Padding for Bottom */
-.main-content {
-    flex-grow: 1; /* Allow content to grow */
-    padding-bottom: 60px; /* Space for footer */
+    margin: 5px 0;
 }
 
 /* Footer Responsiveness */
