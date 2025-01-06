@@ -15,6 +15,9 @@
         .main-content { padding-top: 120px; }
         header { text-align: center; padding: 50px 20px; background-color: #4CAF50; color: white; }
         section { padding: 40px 20px; text-align: center; }
+        section img { width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px; }
+        .tour-card { border: 1px solid #ddd; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); }
+        .tour-card img { width: 100%; height: auto; border-radius: 8px; }
         footer { background-color: #333; color: white; padding: 20px; text-align: center; font-size: 14px; }
     </style>
 </head>
@@ -42,11 +45,43 @@
             <p>Explore amazing destinations with us.</p>
         </header>
 
+        <!-- Featured Tours Section -->
         <section>
             <h1>Featured Tours</h1>
             <p>Join us on unforgettable adventures to the world's most beautiful places.</p>
+            <div class="container">
+                <div class="row">
+                    <!-- Tour 1 -->
+                    <div class="col-md-4">
+                        <div class="tour-card">
+                            <img src="climbing.fjif" alt="Mountain Adventure">
+                            <h2>Mountain Adventure</h2>
+                            <p>Conquer the peaks and explore the beauty of the mountain landscapes. Perfect for thrill-seekers and nature lovers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tour 2 -->
+                    <div class="col-md-4">
+                        <div class="tour-card">
+                            <img src="walking" alt="Coastal Expedition">
+                            <h2>Coastal Expedition</h2>
+                            <p>Experience the breathtaking coastal views, crystal-clear waters, and sandy beaches. Ideal for relaxation and exploration.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tour 3 -->
+                    <div class="col-md-4">
+                        <div class="tour-card">
+                            <img src="images/tour3.jpg" alt="Jungle Safari">
+                            <h2>Jungle Safari</h2>
+                            <p>Venture into the wild and experience the thrilling jungle safari. Discover exotic wildlife and lush greenery.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
+        <!-- How to Book Section -->
         <section>
             <h1>How to Book</h1>
             <p>Booking a tour with us is easy. Simply contact us through our Contact page and we'll take care of the rest.</p>
