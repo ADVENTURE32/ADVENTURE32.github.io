@@ -49,8 +49,8 @@ a {
 header {
     width: 100vw; 
     height: 100vh;
-   'https://images.unsplash.com/photo-1561774289-118421de21d5'; /* Replace with your desired high-quality image */
-    background-position: center;
+    background-image: url('image1.jfif');
+    background-position: bottom;
     background-size: cover; 
     display: flex;
     align-items: flex-end;
@@ -60,7 +60,7 @@ header {
 .header-content {
     margin-bottom: 150px;
     text-align: center;
-    color: white; /* Adjusted for contrast */
+    color: blue; /* Changed from whitesmoke */
 }
 
 .header-content h2 {
@@ -142,7 +142,7 @@ p {
 .Explore {
     width: 100%;
     height: 80vh;
-    background-image: url('https://images.unsplash.com/photo-1556742043-6c2f0119c264'); /* Replace with your desired high-quality image */
+    background-image: url('walking.jfif');
     background-size: cover; 
     background-repeat: no-repeat;
     background-position: center;
@@ -153,7 +153,7 @@ p {
 .explore-content {
     width: 50%;
     padding: 50px;
-    color: white; /* Adjusted for contrast */
+    color: blue; /* Changed from whitesmoke */
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -169,7 +169,7 @@ p {
 }
 
 .explore-content p {
-    color: white; /* Adjusted for contrast */
+    color: blue; /* Changed from whitesmoke */
 }
 
 .explore-content .ctn {
@@ -209,4 +209,4 @@ p {
     .nav-link li {
         margin: 30px auto;
     }
-}
+} change all the background image and make interested image and good
