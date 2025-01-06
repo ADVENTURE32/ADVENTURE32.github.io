@@ -51,6 +51,7 @@
 
         .main-content {
             padding-top: 120px;
+            text-align: center;
         }
 
         header {
@@ -62,7 +63,6 @@
 
         section {
             padding: 40px 20px;
-            text-align: center;
         }
 
         section h1 {
@@ -81,6 +81,7 @@
             text-align: center;
             font-size: 14px;
         }
+
     </style>
 </head>
 <body>
@@ -94,11 +95,11 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#homeModal"><i class="bi bi-house-door"></i> Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tours.html" data-bs-toggle="modal" data-bs-target="#toursModal"><i class="bi bi-map"></i> Tours</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exploreModal"><i class="bi bi-compass"></i> Explore</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutModal"><i class="bi bi-info-circle"></i> About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal"><i class="bi bi-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="loadContent('home')"><i class="bi bi-house-door"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="loadContent('tours')"><i class="bi bi-map"></i> Tours</a></li>
+                    <li class="nav-item"><a class="nav-link" href="explore.html" onclick="loadContent('explore')"><i class="bi bi-compass"></i> Explore</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="loadContent('about')"><i class="bi bi-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="loadContent('contact')"><i class="bi bi-envelope"></i> Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -111,15 +112,13 @@
             <p>Your next journey begins here.</p>
         </header>
 
-        <section>
-            <h1>Upcoming Events</h1>
-            <p>Join us for our upcoming events and explore nature like never before.</p>
-        </section>
-
-        <section>
-            <h1>Explore the World</h1>
-            <p>Discover new places, meet amazing people, and create unforgettable memories.</p>
-        </section>
+        <!-- Dynamic Content Placeholder -->
+        <div id="dynamic-content">
+            <section id="home-content">
+                <h1>Home</h1>
+                <p>Welcome to Adventure! We offer incredible tours to explore the world. Start your adventure now.</p>
+            </section>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -131,107 +130,47 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Modal for Home -->
-    <div class="modal fade" id="homeModal" tabindex="-1" aria-labelledby="homeModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="homeModalLabel">Welcome to Adventure</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h1>Home</h1>
-                    <p>Discover the best adventures and start planning your next trip with us. Explore the world like never before!</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- JavaScript for Dynamic Content -->
+    <script>
+        function loadContent(page) {
+            const content = {
+                home: `
+                    <section id="home-content">
+                        <h1>Home</h1>
+                        <p>Welcome to Adventure! We offer incredible tours to explore the world. Start your adventure now.</p>
+                    </section>`,
+                tours: `
+                    <section id="tours-content">
+                        <h1>Upcoming Tours</h1>
+                        <ul>
+                            <li>Mountain Adventure</li>
+                            <li>Coastal Expedition</li>
+                            <li>Jungle Safari</li>
+                            <li>Historical Landmarks Tour</li>
+                        </ul>
+                        <p>Don't miss out on these amazing experiences!</p>
+                    </section>`,
+                explore: `
+                    <section id="explore-content">
+                        <h1>Explore the World</h1>
+                        <p>Travel the world and discover new places, meet people from different cultures, and create lasting memories!</p>
+                    </section>`,
+                about: `
+                    <section id="about-content">
+                        <h1>About Us</h1>
+                        <p>We are a team dedicated to offering the most exciting and unforgettable travel experiences. Our passion is to help you explore the world.</p>
+                    </section>`,
+                contact: `
+                    <section id="contact-content">
+                        <h1>Contact Us</h1>
+                        <p>If you have any questions or need assistance, feel free to reach out to us. We're here to help!</p>
+                    </section>`
+            };
 
-    <!-- Modal for Tours -->
-    <div class="modal fade" id="toursModal" tabindex="-1" aria-labelledby="toursModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="toursModalLabel">Explore Our Tours</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h1>Upcoming Tours</h1>
-                    <p>Join us on unforgettable adventures to the world's most beautiful places. Whether you're into hiking, sightseeing, or cultural experiences, we have something for everyone.</p>
-                    <ul>
-                        <li>Mountain Adventure</li>
-                        <li>Coastal Expedition</li>
-                        <li>Jungle Safari</li>
-                        <li>Historical Landmarks Tour</li>
-                    </ul>
-                    <p>Don't miss out on these amazing experiences!</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal for Explore -->
-    <div class="modal fade" id="exploreModal" tabindex="-1" aria-labelledby="exploreModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exploreModalLabel">Explore the World</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h1>Explore the World</h1>
-                    <p>Travel the world and discover new places, meet people from different cultures, and create lasting memories!</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal for About -->
-    <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="aboutModalLabel">About Us</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h1>About Adventure</h1>
-                    <p>We are a team dedicated to offering the most exciting and unforgettable travel experiences. Our passion is to help you explore the world.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal for Contact -->
-    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h1>Contact Us</h1>
-                    <p>If you have any questions or need assistance, feel free to reach out to us. We're here to help!</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+            // Replace the content dynamically
+            document.getElementById('dynamic-content').innerHTML = content[page];
+        }
+    </script>
 
 </body>
 </html>
