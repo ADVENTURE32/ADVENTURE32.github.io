@@ -46,11 +46,11 @@
     <nav class="navbar">
         <h1 class="logo">ADVENTURE</h1>
         <ul class="nav-link">
-            <li><a href="#" class="nav-item" data-page="home">Home</a></li>
-            <li><a href="#" class="nav-item" data-page="tours">Tours</a></li>
-            <li><a href="#" class="nav-item" data-page="explore">Explore</a></li>
-            <li><a href="#" class="nav-item" data-page="about">About</a></li>
-            <li><a href="#" class="nav-item" data-page="content">Content</a></li>
+            <li><a href="#" class="nav-item" data-popup="home-popup">Home</a></li>
+            <li><a href="#" class="nav-item" data-popup="tours-popup">Tours</a></li>
+            <li><a href="#" class="nav-item" data-popup="explore-popup">Explore</a></li>
+            <li><a href="#" class="nav-item" data-popup="about-popup">About</a></li>
+            <li><a href="#" class="nav-item" data-popup="content-popup">Content</a></li>
         </ul>
         <img src="menu.png" class="menu-btn">
     </nav>
@@ -94,9 +94,6 @@
         <a href="" class="ctn open-overlay" data-popup="explore-popup">Learn More</a>
     </section>
 
-    <!-- Dynamic Content Container -->
-    <div id="content-container"></div>
-
     <!-- Full-Page Content Overlays (Hidden by default) -->
     <div id="home-popup" class="content-overlay">
         <div class="overlay-content">
@@ -106,19 +103,11 @@
         </div>
     </div>
 
-    <div id="walking-popup" class="content-overlay">
+    <div id="tours-popup" class="content-overlay">
         <div class="overlay-content">
             <span class="overlay-close">&times;</span>
-            <h2>Walking Camp Track Details</h2>
-            <p>This is the detailed description for the Walking Camp Track event. It also covers the entire page when activated.</p>
-        </div>
-    </div>
-
-    <div id="climbing-popup" class="content-overlay">
-        <div class="overlay-content">
-            <span class="overlay-close">&times;</span>
-            <h2>Climbing Holidays Details</h2>
-            <p>This is the detailed description for the Climbing Holidays event. It will appear as a full-page overlay when activated.</p>
+            <h2>Tours Details</h2>
+            <p>This is the detailed description for the Tours event. It will appear as a full-page overlay when activated.</p>
         </div>
     </div>
 
@@ -127,6 +116,22 @@
             <span class="overlay-close">&times;</span>
             <h2>Explore The World Details</h2>
             <p>This is the detailed description for the Explore The World event. It will be displayed as a full-page overlay when clicked.</p>
+        </div>
+    </div>
+
+    <div id="about-popup" class="content-overlay">
+        <div class="overlay-content">
+            <span class="overlay-close">&times;</span>
+            <h2>About Us</h2>
+            <p>This is the detailed description for the About Us section. It will be displayed when the About link is clicked.</p>
+        </div>
+    </div>
+
+    <div id="content-popup" class="content-overlay">
+        <div class="overlay-content">
+            <span class="overlay-close">&times;</span>
+            <h2>Content Details</h2>
+            <p>This is the detailed description for the Content section. It will be displayed as a full-page overlay when activated.</p>
         </div>
     </div>
 
@@ -144,11 +149,13 @@
             });
         }
 
-        // Event listener for navigation items
+        // Event listener for navigation items (Home, Tours, Explore, About, Content)
         navItems.forEach(item => {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
-                closeAllOverlays(); // Close all overlays when clicking on a new page
+                const popupId = item.getAttribute('data-popup');
+                closeAllOverlays(); // Close any previously opened overlay
+                document.getElementById(popupId).style.display = "block"; // Open the selected popup
             });
         });
 
