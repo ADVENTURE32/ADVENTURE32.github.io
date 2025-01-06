@@ -210,3 +210,47 @@ p {
         margin: 30px auto;
     }
 } 
+/* General Layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100vh; /* Ensure the body takes full height */
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;  /* Footer scrolls with the page */
+    width: 100%;
+    flex-shrink: 0;  /* Prevent footer from shrinking */
+    margin-top: auto;  /* Ensure it stays at the bottom when content is short */
+}
+
+.footer-content p {
+    margin: 0;
+}
+
+/* Content Padding for Bottom */
+.main-content {
+    flex-grow: 1; /* Allow content to grow */
+    padding-bottom: 60px; /* Space for footer */
+}
+
+/* Footer Responsiveness */
+@media (max-width: 768px) {
+    footer {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 10px;
+    }
+}
