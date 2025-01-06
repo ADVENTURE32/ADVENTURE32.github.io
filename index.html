@@ -10,35 +10,92 @@
     <nav class="navbar">
         <h1 class="logo">ADVENTURE</h1>
         <ul class="nav-link">
-            <li><a href="#" class="nav-item" data-page="home">Home</a></li>
+            <li class="active"><a href="#" class="nav-item" data-page="home">Home</a></li>
             <li><a href="#" class="nav-item" data-page="tours">Tours</a></li>
             <li><a href="#" class="nav-item" data-page="explore">Explore</a></li>
             <li><a href="#" class="nav-item" data-page="about">About</a></li>
-            <li><a href="#" class="nav-item" data-page="content">Content</a></li>
+            <li class="ctn"><a href="#" class="nav-item" data-page="content">Content</a></li>
         </ul>
         <img src="menu.png" class="menu-btn">
     </nav>
 
-    <div id="content-container"></div> <!-- Dynamic Content -->
+    <header>
+        <div class="header-content">
+            <h2>Explore the colorful gift</h2>
+            <div class="line"></div>
+            <h1>A WONDERFUL GIFT</h1>
+            <a href="#" class="ctn">Learn More</a>
+        </div>
+    </header>
+
+    <section class="events">
+        <div class="title">
+            <h1>Upcoming Events</h1>
+            <div class="line"></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="walking.jfif" alt="">
+                <h4>Event camp track</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio pedit reprehenderit fugit molestiae laborum eaque expedita delectus uis, ratione praesentium esse?</p>
+                <a href="#" class="ctn">Learn More</a>
+            </div>
+            <div class="col">
+                <img src="climbing.jfif" alt="">
+                <h4>Event Walking Holidays</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing fuga fugit dolor consectetur iusto architectous quis, ratione praesentium esse?</p>
+                <a href="#" class="ctn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="Explore">
+        <div class="explore-content">
+            <h1>EXPLORE THE WORLD</h1>
+            <div class="line"></div>
+            <p>ea similique laborum quibusdam sunt eligendi officia dolores ipsa, quidem maxime eaque libero quod, dolorem maiores, culpa quo laboriosam!</p>
+        </div>
+        <a href="" class="ctn">Learn More</a>
+    </section>
+
+    <!-- Dynamic Content Container -->
+    <div id="content-container"></div>
 
     <script>
         const menuBtn = document.querySelector('.menu-btn');
         const navItems = document.querySelectorAll('.nav-item');
         const contentContainer = document.getElementById('content-container');
 
+        // Content for each page in the navbar
         const content = {
-            home: `<h2>Home</h2><p>Welcome to Adventure!</p>`,
-            tours: `<h2>Tours</h2><p>Explore amazing tours!</p>`,
-            explore: `<h2>Explore</h2><p>Discover new places to explore!</p>`,
-            about: `<h2>About</h2><p>Learn more about Adventure.</p>`,
-            content: `<h2>Content</h2><p>Check out our content here.</p>`
+            home: `
+                <h2>Welcome to Adventure!</h2>
+                <p>Explore and enjoy thrilling adventures!</p>
+            `,
+            tours: `
+                <h2>Tours</h2>
+                <p>Discover the best tours around the world!</p>
+            `,
+            explore: `
+                <h2>Explore</h2>
+                <p>Explore new horizons with Adventure!</p>
+            `,
+            about: `
+                <h2>About</h2>
+                <p>Adventure is your gateway to exciting journeys.</p>
+            `,
+            content: `
+                <h2>Content</h2>
+                <p>Check out our amazing content and resources!</p>
+            `
         };
 
+        // Function to load content dynamically based on the selected page
         function loadPage(page) {
             contentContainer.innerHTML = content[page];
         }
 
-        // Add event listeners to navigation items
+        // Event listener for each navbar item to load corresponding content
         navItems.forEach(item => {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -46,9 +103,10 @@
             });
         });
 
-        // Initialize default page (home)
+        // Initialize with Home page content
         loadPage('home');
 
+        // Toggle mobile menu on button click
         menuBtn.addEventListener('click', () => {
             document.querySelector('.nav-link').classList.toggle('mobile-menu');
         });
