@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adventure</title>
     <style>
-        /* General Layout */
-        body {
-            font-family: Arial, sans-serif;
+        /* Ensure body and html cover the full width and prevent horizontal overflow */
+        html, body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            width: 100%;
+            overflow-x: hidden; /* Disable horizontal scroll */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
             min-height: 100vh; /* Ensure the body takes full height */
             display: flex;
             flex-direction: column;
@@ -193,6 +197,11 @@
             color: #555;
         }
 
+        /* Ensure content does not cause horizontal scrolling */
+        * {
+            box-sizing: border-box;
+            overflow-x: hidden; /* Prevent horizontal overflow */
+        }
     </style>
 </head>
 <body>
@@ -278,53 +287,35 @@
         <div class="overlay-content">
             <span class="overlay-close">&times;</span>
             <h2>Content Details</h2>
-            <p>This is the detailed description for the Content section. It covers the entire screen when clicked.</p>
+            <p>This is the detailed description for the Content section. It will be displayed as a full-page overlay when clicked.</p>
         </div>
     </div>
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2025 Adventure. All rights reserved.</p>
-            <p>Developed by Adam</p>
+            <p>&copy; 2025 Adventure All rights reserved.</p>
+            <p>Designed by Your Name</p>
         </div>
     </footer>
 
     <script>
-        const menuBtn = document.querySelector('.menu-btn');
-        const navLinks = document.querySelector('.nav-link');
-        
-        // Toggle the display of the navigation bar when the menu button is clicked
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('show');  // Toggle the 'show' class
+        // Toggle navigation menu on small screens
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-link').classList.toggle('show');
         });
 
-        // Overlay close button functionality
-        const closeButtons = document.querySelectorAll('.overlay-close');
-        closeButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const overlay = button.closest('.content-overlay');
-                overlay.style.display = 'none';
+        // Open full-page content overlays
+        document.querySelectorAll('.open-overlay').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const targetPopup = document.getElementById(this.dataset.popup);
+                targetPopup.style.display = 'flex';
             });
         });
 
-        // Open overlay when links are clicked
-        const overlayLinks = document.querySelectorAll('.open-overlay');
-        overlayLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const popupId = link.getAttribute('data-popup');
-                const overlay = document.getElementById(popupId);
-                overlay.style.display = 'block';
-            });
-        });
-
-        // Close overlay when clicking anywhere outside of the content area
-        const overlays = document.querySelectorAll('.content-overlay');
-        overlays.forEach(overlay => {
-            overlay.addEventListener('click', (e) => {
-                if (e.target === overlay) {  // If clicked outside the content area
-                    overlay.style.display = 'none';
-                }
+        // Close the overlays
+        document.querySelectorAll('.overlay-close').forEach(closeButton => {
+            closeButton.addEventListener('click', function() {
+                this.closest('.content-overlay').style.display = 'none';
             });
         });
     </script>
