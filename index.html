@@ -11,11 +11,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-     body {
+    body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f0f0f0; /* fallback background color */
-    overflow: hidden; /* Ensures the video does not overflow */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    height: 100%; /* Ensure body takes full height */
 }
 
 #background-video {
@@ -27,71 +28,92 @@
     object-fit: cover; /* Ensures the video covers the entire background */
     z-index: -1; /* Places the video behind other content */
 }
-        /* Navigation Bar */
-        .navbar {
-            background-color: blue;
-            width: 90%;
-            margin: 10px auto;
-            border-radius: 8px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-        }
 
-        .navbar-brand {
-            font-weight: bold;
-            color: #333;
-        }
+.main-content {
+    padding-top: 120px; /* Adjust for fixed navbar */
+    padding-bottom: 100px; /* Add space for footer */
+    position: relative;
+}
 
-        .nav-link {
-            font-size: 16px;
-            color: #333;
-            transition: color 0.3s ease, background-color 0.3s ease;
-        }
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    position: relative; /* Ensures footer stays at the bottom of the page */
+    z-index: 1;
+}
 
-        .nav-link:hover {
-            color: #000;
-        }
+.navbar {
+    background-color: blue;
+    width: 90%;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
 
-        .navbar-nav .nav-item {
-            margin: 0 10px;
-        }
+.navbar-brand {
+    font-weight: bold;
+    color: #333;
+}
 
-        .main-content {
-            padding-top: 120px;
-        }
+.nav-link {
+    font-size: 16px;
+    color: #333;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
 
-        header {
-            text-align: center;
-            padding: 50px 20px;
-            background-color: #4CmF50;
-            color: white;
-        }
+.nav-link:hover {
+    color: #000;
+}
 
-        section {
-            padding: 40px 20px;
-            text-align: center;
-        }
+.navbar-nav .nav-item {
+    margin: 0 10px;
+}
 
-        section h1 {
-            font-size: 28px;
-        }
+.main-content {
+    padding-top: 120px; /* Space for the fixed navbar */
+    padding-bottom: 100px; /* Add space for the footer */
+    position: relative;
+}
 
-        section p {
-            font-size: 16px;
-            color: #555;
-        }
+header {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #4CmF50;
+    color: white;
+}
 
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 14px;
-        }
+section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+section h1 {
+    font-size: 28px;
+}
+
+section p {
+    font-size: 16px;
+    color: #555;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+}
+
     </style>
 </head>
 <body>
